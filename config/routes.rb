@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+    resources :tasks
     get "home/edit/:id", to: "home#edit", as: "home_edit"
     get "home/index", to: "home#index"
     get "home/new", to: "home#new"
