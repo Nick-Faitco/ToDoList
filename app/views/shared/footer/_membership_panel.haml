@@ -1,0 +1,21 @@
+%ul
+  %li
+    %a{href: 'https://www.costco.com/join-costco.html'}= t('application.footer.membership_1')
+  %li
+    %a{href: 'https://www.costco.com/member-privileges-conditions.html'}= t('application.footer.membership_2')
+  %li
+    %a{href: 'https://www.costco.com/privacy-policy.html'}= t('application.footer.membership_3')
+  %li
+    -# %a{href: 'https://www.costco.com/DNSMIView', target: '_blank'}
+    -#   %i.costco-privacy-options
+    -#     = svg('privacyoptions')
+    -#     != t('application.footer.membership_4')
+  - if !Rails.env.production? || Date.today >= Date.new(2024,3,31)
+    %li
+      %a{href: 'https://www.costco.com/consumer-health-data-privacy-policy.html', target: '_blank'} Consumer Health Data
+  %li
+    %a{href: 'https://www.costco.com/wcsstore/CostcoUSBCCatalogAssetStore/rx/pharmacy-privacy-practice.pdf', target: '_blank'}= t('application.footer.membership_5')
+  %li
+    %a{href: 'https://www.costco.com/privacy-policy.html#cppa', target: '_blank'}= "CA Notice"
+  %li
+    %button#ot-sdk-btn.ot-sdk-show-settings{style: "padding: 5px 0 !important;line-height: 1.42857143;"} Cookie Settings

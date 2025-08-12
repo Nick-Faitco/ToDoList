@@ -1,0 +1,94 @@
+footer.footer
+  background: $footer-bg
+  position: absolute
+  //bottom: 0
+  width: 100%
+  min-height: $footer-height
+
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+    > li 
+      > a, button
+        display: block
+        padding: 5px 0
+        color: $gray-light-medium !important
+        font-size: 1em
+      
+      &:last-child 
+        > a 
+          padding-bottom: 0
+
+
+  h3
+    color: $gray-dark
+    margin: 40px 0 20px
+    font-size: 1.25em
+
+  a 
+    color: $gray-dark
+
+  p
+    font-size: .875em
+    color: $gray-light-medium
+    margin: 0
+    padding: 30px 0 0
+    border-top: 1px solid $gray-border-medium
+
+  .container .row
+    margin-bottom: 40px
+#desktop-footer
+  margin-top: 20px
+  .list-title
+    padding: 15px 15px 15px 0px
+  span
+    font-size: 18px
+#footer-accordion
+  margin-top: 20px
+  
+  .panel-group
+    margin: 0
+  
+    .panel
+      background: transparent
+
+    .panel-title
+      font-size: 18px
+
+    .panel-default 
+      .panel-heading
+        border-top-color: #9c9c9c
+      
+      .panel-body
+        padding-top: 0
+
+@media (max-width: 1024px)
+  footer.footer
+    margin-top: 60px
+
+@media (max-width: 768px)
+  footer.footer
+    height: auto
+    position: relative
+
+  .row
+    padding-bottom: 40px
+
+@media (min-width: 769px)
+  #footer-accordion
+    min-height: 258px
+    .panel-group
+      display: flex
+      justify-content: space-around
+      .panel-default
+        .panel-heading
+          border-top-color: transparent 
+          &:hover, a:hover
+            cursor: default
+          a:after
+            content: ''
+        .panel-collapse.collapse
+          display: block !important
+          height: auto

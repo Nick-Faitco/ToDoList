@@ -1,0 +1,26 @@
+%footer.footer
+  .container
+    #desktop-footer.m-b-0.row.hidden-xs.hidden-sm
+      .col-md-1
+      .col-md-3.text-left
+        .list-title
+          %span= t('.about')
+        .center-block
+          = render 'shared/footer/about_us_panel'
+      .col-md-1
+      .col-md-3.text-left
+        .list-title
+          %span= t('.membership')
+        .center-block
+          = render 'shared/footer/membership_panel'
+      .col-md-1
+      .col-md-3.text-left
+        .list-title
+          %span= t('.customer_service')
+        .center-block
+          = render 'shared/footer/customer_service_panel'
+    .row
+      .col-md-12.text-center
+    .row
+      .col-md-12.text-center
+        %p #{t('.copyright', year: "1999-#{Time.now.year}")}
