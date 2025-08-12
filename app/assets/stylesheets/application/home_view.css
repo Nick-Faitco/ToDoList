@@ -112,3 +112,11 @@ h1 {
     background: #ffba21;
     background: linear-gradient(0deg, rgba(255, 186, 33, 0.3785889355742297) 0%, rgba(255, 186, 33, 1) 100%);
 }
+
+.icon-grow {
+    transition: transform 0.3s ease;
+}
+
+.icon-grow:hover {
+    transform: scale(1.1);
+}

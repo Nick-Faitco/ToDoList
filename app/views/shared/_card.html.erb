@@ -14,9 +14,14 @@
                     <div class="media-body">
                         <div>
                             <h6 class="my-0 text-dark d-block">Priority</h6>
-                            <small>PLACEHOLDER</small>
+                            <small>id : <%=task.id%></small>
                         </div>
-                        <%# <i class="fa fa-plus-circle"></i> %>
+                        <%= link_to home_edit_path(task), class: "btn btn-lg", style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do %>
+                            <i class="fa fa-pencil"></i>
+                        <% end %>
+                        <%= link_to home_destroy_path, class: "btn btn-lg", style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do %>
+                            <i class="fa fa-trash-o"></i>
+                        <% end %>
                     </div>
                 </div>
             </div>
