@@ -44,6 +44,7 @@ gem "thruster", require: false
 
 gem "haml"
 gem "font-awesome-rails"
+gem "byebug"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

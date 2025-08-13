@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get "home/edit/:id", to: "home#edit", as: "home_edit"
     get "home/index", to: "home#index"
     get "home/new", to: "home#new"
-    get "home/destroy", to: "home#destroy"
+    get "home/destroy/:id", to: "home#destroy", as: "home_destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

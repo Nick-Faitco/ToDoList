@@ -120,3 +120,18 @@ h1 {
 .icon-grow:hover {
     transform: scale(1.1);
 }
+
+.field_input {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    width: 100%;
+}
+
+.field_input:focus {
+    outline: none;
+    box-shadow: none;
+}

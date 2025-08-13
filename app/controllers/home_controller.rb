@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [ :edit, :update, :destroy ]
   def index
     @tasks = Task.all
   end
@@ -21,8 +21,10 @@ class HomeController < ApplicationController
   end
 
   def update
+    byebug
+    puts @task
     if @task.update(task_params)
-      redirect_to @task, notice: "Task was successfully updated."
+      redirect_to home_index_path, notice: "Task was successfully updated."
     else
       render :edit
     end
@@ -30,7 +32,7 @@ class HomeController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: "Taske was successfully destroyed."
+    redirect_to home_index_path, notice: "Taske was successfully destroyed."
   end
 
   private
