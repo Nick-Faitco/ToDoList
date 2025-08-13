@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to @task, notice: "Task was successfully created."
+      redirect_to home_index_path
     else
       render :new
     end
@@ -23,20 +23,18 @@ class TasksController < ApplicationController
   end
 
   def update
-    # byebug
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      byebug
-      redirect_to home_index_path, notice: "Task was successfully updated."
+      render :edit
     else
-      byepug
       render :edit, notice: "Task failed."
     end
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
-    redirect_to home_index_path, notice: "Taske was successfully destroyed."
+    redirect_to home_index_path
   end
 
   private

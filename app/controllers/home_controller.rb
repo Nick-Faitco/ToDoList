@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
  
   def index
-    @tasks = Task.all
+    @tasks = Task.order(created_at: :desc)
   end
 
   def show

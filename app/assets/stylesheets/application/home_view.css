@@ -129,6 +129,7 @@ h1 {
     font-family: inherit;
     color: inherit;
     width: 100%;
+    resize: none;
 }
 
 .field_input:focus {

@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
-  resources :tasks
   get "tasks/index"
-  get "tasks/edit"
   get "tasks/show"
   get "tasks/new"
+  get "tasks/edit/:id", to: "tasks#edit", as: "tasks_edit"
   get "tasks/create"
   get "tasks/update"
-  get "tasks/destroy"
+  get "tasks/destroy/:id", to: "tasks#destroy", as: "tasks_destroy"
+  resources :tasks
   namespace :home do
-    #get "home/edit/:id", to: "home#edit", as: "home_edit"
     get "index"
-    #get "home/new", to: "home#new"
-    #get "home/destroy/:id", to: "home#destroy", as: "home_destroy"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

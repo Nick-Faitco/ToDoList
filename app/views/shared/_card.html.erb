@@ -11,17 +11,22 @@
             <div class="card-footer">
                 <div class="media">
                     <img class="mr-3 rounded-circle" src="" alt="" style="max-width:50px; min-width:75px; min-height:75px;">
+                    <h6 class="my-0 text-dark d-block"><%=task["completion_status"]%></h6>
+                    <%if task.completion_status == AppConstants::STATUS[:PENDING]%>
+                        <p>this is a test</p>
+                    <%end%>
                     <div class="media-body">
                         <div>
-                            <h6 class="my-0 text-dark d-block">Priority</h6>
-                            <small>id : <%=task.id%></small>
+                            <small><%=task.created_at.strftime("%B %d, %Y")%></small>
                         </div>
-                        <%= link_to tasks_edit_path(task.id), class: "btn btn-lg", style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do %>
-                            <i class="fa fa-pencil"></i>
-                        <% end %>
-                        <%= link_to tasks_destroy_path(task.id), class: "btn btn-lg", style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do %>
-                            <i class="fa fa-trash-o"></i>
-                        <% end %>
+                        <div style="display:flex; flex-direction:row; gap:5px; justify-content: end">
+                            <%= link_to tasks_edit_path(task), style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do %>
+                                <i class="fa fa-pencil"></i>
+                            <% end %>
+                            <%= link_to tasks_destroy_path(task), style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do %>
+                                <i class="fa fa-trash-o"></i>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>
