@@ -22,8 +22,8 @@
                                 <%= form.radio_button :completion_status, value, checked: @task.completion_status == value, data: {action:"change->tasks#checked"} %>
                                 
                                 <div class="rounded-circle d-flex justify-content-center align-items-center" 
-                                style="max-width:50px; min-width:75px; min-height:75px; border:2px solid grey;">
-                                <i class="fa <%= icon_class %>" style="color:limegreen; font-size: 2em;" aria-hidden="true"></i>
+                                style="width:3rem; height:3rem; border:2px solid grey;">
+                                <i class="fa <%= icon_class %>" style="color:limegreen; font-size: 1.5em;" aria-hidden="true"></i>
                                 </div>
                             </label>
                             <% end %>
