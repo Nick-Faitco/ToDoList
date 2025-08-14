@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      render :edit
+        redirect_to home_index_path
     else
       render :edit, notice: "Task failed."
     end
@@ -43,6 +43,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:id, :title, :description, :completion_status)
+    params.require(:task).permit(:id, :title, :description, :completion_status, :completed_date)
   end
 end

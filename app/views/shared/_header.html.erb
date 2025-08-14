@@ -1,0 +1,33 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">      
+        <a href="/" class="navbar-brand">TO DO</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+            </div>
+
+            <div class="navbar-nav ms-auto align-items-center gap-3">
+                <% AppConstants::STATUS.each do |key, value| %>
+                    <% icon_class = case key
+                        when :PENDING then 'fa-battery-empty'
+                        when :STARTED then 'fa-battery-half'
+                        when :COMPLETED then 'fa-battery-full'
+                    end %>
+                    <%= link_to home_index_path(query: params[:query], status: key), class: "text-decoration-none" do %>
+                    <i class="fa <%= icon_class %>" style="color:limegreen; font-size: 2em;" aria-hidden="true"></i>
+                    <% end %>
+                <% end %>
+                
+                <%= form_with url: home_index_path, method: :get, local: true do%>
+                <div class="d-flex ms-auto">
+                    <%= text_field_tag :query, params[:query], class: "form-control me-sm-2", placeholder: "Search" %>
+                    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+                </div>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</nav>

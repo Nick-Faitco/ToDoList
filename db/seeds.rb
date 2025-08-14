@@ -1,4 +1,4 @@
-require './config/constants'
+require './config/initializers/constants'
 
 Task.create!([
   { title: 'Eat a Healthy Breakfast',
@@ -9,10 +9,10 @@ Task.create!([
     completion_status: AppConstants::STATUS[:PENDING] },
   { title: 'Take Breaks',
     description: 'Regular breaks, even short ones, can help prevent burnout and improve focus.',
-    completion_status: AppConstants::STATUS[:PENDING] },
+    completion_status: AppConstants::STATUS[:STARTED] },
   { title: 'Disconnect from Work',
     description: 'Make time to disconnect from work in the evening to allow for relaxation and recharge.',
-    completion_status: AppConstants::STATUS[:PENDING] },
+    completion_status: AppConstants::STATUS[:STARTED] },
   { title: 'Practice Mindfulness',
     description: 'Engage in activities like meditation or deep breathing exercises to manage stress and improve focus.',
     completion_status: AppConstants::STATUS[:PENDING] },
@@ -21,14 +21,14 @@ Task.create!([
     completion_status: AppConstants::STATUS[:PENDING] },
   { title: 'Engage in Physical Activity',
     description: 'Incorporate exercise into your routine, even if it\'s just a short walk, to boost energy and mood. ',
-    completion_status: AppConstants::STATUS[:PENDING] },
+    completion_status: AppConstants::STATUS[:STARTED] },
   { title: 'Read',
     description: 'There is perhaps no better daily routine than reading. Like exercise, it comes with countless benefits; from reducing stress, to improving your memory.',
-    completion_status: AppConstants::STATUS[:PENDING] },
+    completion_status: AppConstants::STATUS[:COMPLETED] },
   { title: 'Journaling',
     description: 'Journaling can be whatever you need it to be – a place to sort out your thoughts, track your progress, or just let your mind wander.',
-    completion_status: AppConstants::STATUS[:PENDING] },
+    completion_status: AppConstants::STATUS[:COMPLETED] },
   { title: 'Make bed',
     description: 'Prepare for the day by making your bed. It\'s a quick chore that will put you in a productive, organized frame of mind.',
-    completion_status: AppConstants::STATUS[:PENDING] }
+    completion_status: AppConstants::STATUS[:COMPLETED] }
 ])

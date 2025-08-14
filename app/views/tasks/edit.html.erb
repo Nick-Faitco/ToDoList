@@ -1,32 +1,52 @@
-<h1>edit page</h1>
-<%= form_with(model: @task, local: true) do |form| %>
+<div class="col-sm-12 col-md-6 col-lg-4 mb-4 p-5">
+    <%= form_with(model: @task, local: true) do |form| %>
+        <div class="card text-dark card-has-bg click-col"
+            style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
+            <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+            <div class="card-img-overlay d-flex flex-column">
+                <div class="card-body">
+                    <small><%=form.text_area :title, class: "card-meta mb-2 field_input", id: "textTitle"%></small>
+                    <small><%=form.text_area :description, class: "field_input", id: "textDescription"%></small>
+                </div>
+                <div class="card-footer">
+                    <div class="media d-flex flex-column gap-2">
+                        <div data-controller="tasks" class="d-flex flex-row justify-content-start gap-2">
+                            <% AppConstants::STATUS.each do |key, value| %>
+                            <% icon_class = case key
+                                when :PENDING then 'fa-battery-empty'
+                                when :STARTED then 'fa-battery-half'
+                                when :COMPLETED then 'fa-battery-full'
+                            end %>
 
-<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-    <div class="card text-dark card-has-bg click-col"
-        style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
-        <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
-        <div class="card-img-overlay d-flex flex-column">
-            <div class="card-body">
-                <small><%=form.text_area :title, class: "card-meta mb-2 field_input"%></small>
-                <%# <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">PLACEHOLDER</a></h4> %>
-                <small><%=form.text_area :description, class: "field_input"%></small>
-            </div>
-            <div class="card-footer">
-                <div class="media">
-                    <img class="mr-3 rounded-circle" src="" alt="" style="max-width:50px; min-width:75px; min-height:75px;">
-                    <div class="media-body">
-                        <div>
-                            <h6 class="my-0 text-dark d-block">Priority</h6>
-                            <small>PLACEHOLDER</small>
+                            <label class="mr-3" data-value="<%= value %>" style="cursor: pointer;">
+                                <%= form.radio_button :completion_status, value, checked: @task.completion_status == value, data: {action:"change->tasks#checked"} %>
+                                
+                                <div class="rounded-circle d-flex justify-content-center align-items-center" 
+                                style="max-width:50px; min-width:75px; min-height:75px; border:2px solid grey;">
+                                <i class="fa <%= icon_class %>" style="color:limegreen; font-size: 2em;" aria-hidden="true"></i>
+                                </div>
+                            </label>
+                            <% end %>
                         </div>
-                        <%# <i class="fa fa-plus-circle"></i> %>
+                        <div class="media-body d-flex flex-row justify-content-between align-items-center">
+                            <div>
+                                <% if @task.updated_at == @task.created_at%>
+                                    <small><i>Created</i></small>
+                                    <small><%=@task.created_at.strftime("%B %d, %Y")%></small>
+                                <% elsif @task.updated_at != @task.created_at%>
+                                    <div>
+                                        <small><i>Updated</i></small>
+                                        <small><%=@task.updated_at.strftime("%B %d, %Y")%></small>
+                                    </div>
+                                <%end%>
+                            </div>
+                            <div>
+                                <%= button_tag(type: 'submit', class: 'btn btn-outline-primary', id: "updateButton", disabled: false) do %>Update<% end %>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <%end%>
 </div>
-<div>
-    <%= form.submit "Update"%>
-</div>
-<%end%>

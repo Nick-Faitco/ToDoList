@@ -6,24 +6,38 @@
             <div class="card-body">
                 <small class="card-meta mb-2"><%=task["title"]%></small>
                 <%# <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">PLACEHOLDER</a></h4> %>
-                <small><i class="far fa-clock"></i> <%=task["description"]%></small>
+                <small><%=task["description"]%></small>
             </div>
             <div class="card-footer">
-                <div class="media">
-                    <img class="mr-3 rounded-circle" src="" alt="" style="max-width:50px; min-width:75px; min-height:75px;">
-                    <h6 class="my-0 text-dark d-block"><%=task["completion_status"]%></h6>
-                    <%if task.completion_status == AppConstants::STATUS[:PENDING]%>
-                        <p>this is a test</p>
-                    <%end%>
-                    <div class="media-body">
+                <div class="media d-flex flex-column gap-2">
+                    <div class="mr-3 rounded-circle d-flex justify-content-center align-items-center" style="max-width:50px; min-width:75px; min-height:75px;border:2px solid limegreen">
+                        <%if task.completion_status == AppConstants::STATUS[:PENDING]%>
+                            <i class="fa fa-battery-empty"style="color:limegreen; font-size: 2em" aria-hidden="true"></i>
+                        <%end%>
+                        <%if task.completion_status == AppConstants::STATUS[:STARTED]%>
+                            <i class="fa fa-battery-half" style="color:limegreen; font-size: 2em" aria-hidden="true"></i>
+                        <%end%>
+                        <%if task.completion_status == AppConstants::STATUS[:COMPLETED]%>
+                            <i class="fa fa-battery-full" style="color:limegreen; font-size: 2em" aria-hidden="true"></i>
+                        <%end%>
+                    </div>
+                    <div class="media-body d-flex flex-row justify-content-between align-items-center">
                         <div>
-                            <small><%=task.created_at.strftime("%B %d, %Y")%></small>
+                            <% if task.updated_at == task.created_at%>
+                                <small><i>Created</i></small>
+                                <small><%=task.created_at.strftime("%B %d, %Y")%></small>
+                            <% elsif task.updated_at != task.created_at%>
+                                <div>
+                                    <small><i>Updated</i></small>
+                                    <small><%=task.updated_at.strftime("%B %d, %Y")%></small>
+                                </div>
+                            <%end%>
                         </div>
-                        <div style="display:flex; flex-direction:row; gap:5px; justify-content: end">
-                            <%= link_to tasks_edit_path(task), style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do %>
+                        <div class="d-flex flex-row justify-content-end gap-4">
+                            <%= link_to tasks_edit_path(task), style: "font-size: 1.5em; color: rgba(0,0,0,0.3);", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do %>
                                 <i class="fa fa-pencil"></i>
                             <% end %>
-                            <%= link_to tasks_destroy_path(task), style: "font-size: 1em; color: Tomato;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do %>
+                            <%= link_to tasks_destroy_path(task), style: "font-size: 1.5em; color: rgba(0,0,0,0.3);", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do %>
                                 <i class="fa fa-trash-o"></i>
                             <% end %>
                         </div>
