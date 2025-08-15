@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to home_index_path
     else
-      render :new
+      render :new, notice: "Not all required fields entered."
     end
   end
 
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
         redirect_to home_index_path
     else
-      render :edit, notice: "Task failed."
+      render :edit, notice: "Not all required fields entered."
     end
   end
 

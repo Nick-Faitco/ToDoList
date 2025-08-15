@@ -4,14 +4,14 @@ one:
   title: MyString
   description: MyString
   completion_status: MyString
-  created_date: 2025-08-12 10:59:29
-  updated_date: 2025-08-12 10:59:29
+  # created_date: 2025-08-12 10:59:29
+  # updated_date: 2025-08-12 10:59:29
   completed_date: 2025-08-12 10:59:29
 
 two:
   title: MyString
   description: MyString
   completion_status: MyString
-  created_date: 2025-08-12 10:59:29
-  updated_date: 2025-08-12 10:59:29
+  # created_date: 2025-08-12 10:59:29
+  # updated_date: 2025-08-12 10:59:29
   completed_date: 2025-08-12 10:59:29
