@@ -1,0 +1,21 @@
+%nav.navbar.sticky-top.navbar-expand-lg.navbar-light{ style: "background-color: #e3f2fd;" }
+  .container-fluid
+    = link_to "/", class: "navbar-brand" do
+      TO DO
+    %button.navbar-toggler{ type: "button", "data-bs-toggle": "collapse", "data-bs-target": "#navbarCollapse" }
+      %span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+      .navbar-nav
+      .navbar-nav.ms-auto.align-items-center.gap-3
+        - AppConstants::STATUS.each do |key, value|
+          - icon_class = case key
+            - when :PENDING then 'fa-battery-empty'
+            - when :STARTED then 'fa-battery-half'
+            - when :COMPLETED then 'fa-battery-full'
+          = link_to home_index_path(query: params[:query], status: key), class: "text-decoration-none" do
+            %i{ class: "fa #{icon_class}", style: "color:limegreen; font-size: 2em;", "aria-hidden": "true" }
+
+        = form_with url: home_index_path, method: :get, local: true do
+          .d-flex.ms-auto
+            = text_field_tag :query, params[:query], class: "form-control me-sm-2", placeholder: "Search"
+            = submit_tag "Search", class: "btn btn-outline-primary"
