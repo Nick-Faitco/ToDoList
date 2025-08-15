@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Go to the Gym
+  description: Working out is important for long term health
+  completion_status: Not Started
+  completed_date: 2025-08-12 10:59:29
+
+two:
+  title: Eat Breakfast
+  description: Breakfast is said to be the most important meal of the day
+  completion_status: In Progress
+  completed_date: 2025-08-12 10:59:29
+
+three:
+  title: Read
+  description: Reading keeps your mind sharp and allows you to focus
+  completion_status: Finished
+  completed_date: 2025-08-12 10:59:29

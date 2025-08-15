@@ -1,0 +1,48 @@
+class TasksController < ApplicationController
+  before_action :set_task, only: [ :edit, :update, :destroy ]
+  def index
+  end
+
+  def show
+  end
+
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to home_index_path
+    else
+      render :new, notice: "Not all required fields entered."
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+        redirect_to home_index_path
+    else
+      render :edit, notice: "Not all required fields entered."
+    end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to home_index_path, notice: "Task was successfully deleted."
+  end
+
+  private
+  def set_task
+    @task = Task.find_by("id" => params[:id])
+  end
+
+  def task_params
+    params.require(:task).permit(:id, :title, :description, :completion_status, :completed_date)
+  end
+end

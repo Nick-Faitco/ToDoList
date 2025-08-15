@@ -1,0 +1,9 @@
+%div
+  = link_to tasks_new_path, class: "btn btn-lg", style: "font-size: 3em; color: #e3f2fd; position: fixed; margin-top: -10px;", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Create a new task" do
+    %i.fa.fa-plus-circle.icon-grow
+
+%section.wrapper{ style: "min-height: 500px" }
+  .container.py-2
+    .row
+      - @tasks.each do |task|
+        = render "shared/card", task: task

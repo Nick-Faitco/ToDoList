@@ -1,0 +1,32 @@
+.col-sm-12.col-md-6.col-lg-4.mb-4
+  .card.text-dark.card-has-bg.click-col{ style: "background-image:url('https://source.unsplash.com/600x900/?tech,street');" }
+    %img.card-img.d-none{ src: "https://source.unsplash.com/600x900/?tech,street", alt: "Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?" }
+    .card-img-overlay.d-flex.flex-column
+      .card-body
+        %small.card-meta.mb-2= task["title"]
+        %small= task["description"]
+      .card-footer
+        .media.d-flex.flex-column.gap-2
+          .mr-3.rounded-circle.d-flex.justify-content-center.align-items-center{ style: "width:4rem; height:4rem ;border:2px solid limegreen" }
+            - if task.completion_status == AppConstants::STATUS[:PENDING]
+              %i.fa.fa-battery-empty{ style: "color:limegreen; font-size: 2em", aria: { hidden: "true" } }
+            - if task.completion_status == AppConstants::STATUS[:STARTED]
+              %i.fa.fa-battery-half{ style: "color:limegreen; font-size: 2em", aria: { hidden: "true" } }
+            - if task.completion_status == AppConstants::STATUS[:COMPLETED]
+              %i.fa.fa-battery-full{ style: "color:limegreen; font-size: 2em", aria: { hidden: "true" } }
+          .media-body.d-flex.flex-row.justify-content-between.align-items-center
+            - if task.updated_at == task.created_at
+              %div
+                %small
+                  %i Created
+                %small= task.created_at.strftime("%B %d, %Y")
+            - elsif task.updated_at != task.created_at
+              %div
+                %small
+                  %i Updated
+                %small= task.updated_at.strftime("%B %d, %Y")
+            .d-flex.flex-row.justify-content-end.gap-4
+              = link_to tasks_edit_path(task), style: "font-size: 1.5em; color: rgba(0,0,0,0.3);", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Edit task" do
+                %i.fa.fa-pencil
+              = link_to tasks_destroy_path(task), style: "font-size: 1.5em; color: rgba(0,0,0,0.3);", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Delete task" do
+                %i.fa.fa-trash-o
